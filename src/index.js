@@ -1,6 +1,6 @@
-const { createDistrict, createHealthCenter, createFamily, createPerson} = require('./contacts');
+const { createDistrict, createHealthCenter, createFamily, createPerson } = require('./contacts');
 const { createUser, getUser} = require('./users');
-const { createReport } = require('./forms');
+const { createReport } = require('./reports');
 const utils = require('./utils');
 const { createTask, createTarget } = require('./tasks_targets');
 const { createReminder } = require('./reminders');
@@ -20,7 +20,7 @@ const { createReminder } = require('./reminders');
     // const target = await createTarget(user);
 
     // await createReport();
-    //await createReminder();
+    // await createReminder();
   } catch (err) {
     console.error(err);
   }

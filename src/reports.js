@@ -9,11 +9,11 @@ const utils = require('./utils');
 const { randomIndex } = require('./utils');
 const { getRandomPerson } = require('./contacts');
 
-let forms;
+let reports;
 
 const getForms = async () => {
   const result = await db.medic.allDocs({ start_key: 'form:', end_key: 'form:\ufff0', include_docs: true, attachments: true });
-  forms = result.rows
+  reports = result.rows
     .map(row => {
       if (row.id.startsWith('form:contact') || row.doc.type !== 'form') {
         return;
@@ -28,7 +28,7 @@ const getForms = async () => {
     })
     .filter(form => form && form.model && form.model[form.name]);
 
-  return forms;
+  return reports;
 };
 
 const isEmptyObj = keys => {
@@ -125,10 +125,10 @@ const hydrateFieldsRecursive = (report, content, path = '') => {
 
 const createReport = async (submitter, patient, form) => {
   if (!form) {
-    if (!forms) {
+    if (!reports) {
       await getForms();
     }
-    form = forms[randomIndex(forms)];
+    form = reports[randomIndex(reports)];
   }
 
   if (!submitter) {
