@@ -21,6 +21,7 @@ const { createReminder } = require('./reminders');
 
     // await createReport();
     // await createReminder();
+    console.log('this is a change');
   } catch (err) {
     console.error(err);
   }
